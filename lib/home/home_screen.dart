@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ClipRect(
-           clipper: MyClipper(),
+          clipper: MyClipper(),
           child: Container(
             color: Colors.red,
             child: FlutterLogo(
@@ -24,11 +24,15 @@ class HomeScreen extends StatelessWidget {
 class MyClipper extends CustomClipper<Rect> {
   @override
   Rect getClip(Size size) {
-    return Rect.fromLTRB(
-      size.width/2,
-      size.height/2,
-      size.width,
-      size.height,
+    return Rect.fromCircle(
+      center: Offset(size.width / 2, size.height / 2),
+      radius: 100,
+    );
+    //r : 100
+    return Rect.fromCenter(
+      center: Offset(size.width / 2, size.height / 2),
+      width: 200,
+      height: 200,
     );
   }
 
