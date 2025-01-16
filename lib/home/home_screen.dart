@@ -67,23 +67,25 @@ class MyClipperPath extends CustomClipper<Path> {
     path.lineTo(0, 0);
     path.lineTo(200, 20);
     path.lineTo(50, 70);
-    path.close();
-    // path.relativeLineTo(50, 200);
-    // path.lineTo(100, 270);
-    path.moveTo(size.width, size.height);
-    path.lineTo(size.width - 50, size.height - 50);
-    path.lineTo(size.width - 300, size.height - 50);
-    path.close();
-
-    path.moveTo(size.width, 0);
-    path.lineTo(size.width, 50);
-    path.lineTo(200, 50);
-    path.close();
-
-    path.moveTo(size.width, 0);
-    path.lineTo(size.width, 50);
-    path.lineTo(200, 50);
-    // path.lineTo(x, y)
+     // path.close();
+    // // path.relativeLineTo(50, 200);
+    // // path.lineTo(100, 270);
+    // path.moveTo(size.width, size.height);
+    // path.lineTo(size.width - 50, size.height - 50);
+    // path.lineTo(size.width - 300, size.height - 50);
+    // path.close();
+    //
+    // path.moveTo(size.width, 0);
+    // path.lineTo(size.width, 50);
+    // path.lineTo(200, 50);
+    // path.close();
+    //
+    // path.moveTo(size.width, 0);
+    // path.lineTo(size.width, 50);
+    // path.lineTo(200, 50);
+    // Rect rect=Rect.fromLTRB(0, 0, size.width, size.height);
+    // path.addArc(rect, 10, 130);
+    print(path.contains(Offset(0, 0))); // path.lineTo(x, y)
     return path;
   }
 
