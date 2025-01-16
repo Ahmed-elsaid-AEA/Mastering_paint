@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // borderRadius: BorderRadius.all(
                 //   Radius.circular(50),
                 // ),
-                clipper:MyClipper(),
+                clipper: MyClipper(),
                 child: Image.asset("assets/images/back.jpg"),
               ),
             ),
@@ -51,11 +51,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class MyClipper extends CustomClipper <RRect> {
+class MyClipper extends CustomClipper<RRect> {
   @override
   RRect getClip(Size size) {
     // TODO: implement getClip
-    return RRect.fromLTRBR(0, 0, size.width, size.height, Radius.circular(50));
+    return RRect.fromLTRBXY(
+      10,
+      100,
+      size.width - 50,
+      size.height - 10,
+      10,
+      50,
+    );
   }
 
   @override
