@@ -66,6 +66,9 @@ class MyClipperPath extends CustomClipper<Path> {
     path.lineTo(0, 0);
     path.lineTo(200, 20);
     path.lineTo(50, 70);
+    path.moveTo(200, 20);
+    path.relativeLineTo(1000, 20);
+    // path.lineTo(100, 270);
     path.lineTo(size.width, size.height);
     return path;
   }
