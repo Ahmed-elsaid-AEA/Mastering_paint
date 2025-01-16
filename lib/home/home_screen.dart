@@ -9,6 +9,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Size size = Size(600, 600);
+  double top = 20;
+  double left = 50;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +19,20 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              color: Colors.red,
-              child: ClipRRect(
-                // borderRadius: BorderRadius.all(
-                //   Radius.circular(50),
-                // ),
-                clipper: MyClipper(),
-                child: Image.asset("assets/images/back.jpg"),
-              ),
+            ClipPath(
+              clipper: MyClipperPath(),
+              child: Image.asset("assets/images/back.jpg"),
             ),
+            // Container(
+            //   color: Colors.red,
+            //   child: ClipRRect(
+            //     // borderRadius: BorderRadius.all(
+            //     //   Radius.circular(50),
+            //     // ),
+            //     clipper: MyClipper(size, top, left),
+            //     child: Image.asset("assets/images/back.jpg"),
+            //   ),
+            // ),
             // ClipRect(
             //   // clipBehavior: Clip.none,
             //   clipper: MyClipper(size),
@@ -41,6 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
                 onPressed: () {
                   size = Size(300, 300);
+                  top = 100;
+                  left = 200;
                   setState(() {});
                 },
                 child: Text("data"))
@@ -51,22 +59,19 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class MyClipper extends CustomClipper<RRect> {
+class MyClipperPath extends CustomClipper<Path> {
   @override
-  RRect getClip(Size size) {
-    // TODO: implement getClip
-    return RRect.fromLTRBXY(
-      10,
-      100,
-      size.width - 50,
-      size.height - 10,
-      10,
-      50,
-    );
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, 0);
+    path.lineTo(200, 20);
+    path.lineTo(50, 70);
+    path.lineTo(size.width, size.height);
+    return path;
   }
 
   @override
-  bool shouldReclip(covariant CustomClipper<RRect> oldClipper) {
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
     return true;
   }
 }
