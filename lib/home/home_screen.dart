@@ -1,43 +1,65 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Size size = Size(600, 600);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ClipRect(
-          clipper: MyClipper(),
-          child: Container(
-            color: Colors.red,
-            child: FlutterLogo(
-              size: 600,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              color: Colors.red,
+              child: ClipRRect(
+                // borderRadius: BorderRadius.all(
+                //   Radius.circular(50),
+                // ),
+                clipper:MyClipper(),
+                child: Image.asset("assets/images/back.jpg"),
+              ),
             ),
-          ),
+            // ClipRect(
+            //   // clipBehavior: Clip.none,
+            //   clipper: MyClipper(size),
+            //   child: Container(
+            //     color: Colors.red,
+            //     child: FlutterLogo(
+            //       size: 600,
+            //     ),
+            //   ),
+            // ),
+
+            ElevatedButton(
+                onPressed: () {
+                  size = Size(300, 300);
+                  setState(() {});
+                },
+                child: Text("data"))
+          ],
         ),
       ),
     );
   }
 }
 
-class MyClipper extends CustomClipper<Rect> {
+class MyClipper extends CustomClipper <RRect> {
   @override
-  Rect getClip(Size size) {
-    return Rect.fromCircle(
-      center: Offset(size.width / 2, size.height / 2),
-      radius: 100,
-    );
-    //r : 100
-    return Rect.fromCenter(
-      center: Offset(size.width / 2, size.height / 2),
-      width: 200,
-      height: 200,
-    );
+  RRect getClip(Size size) {
+    // TODO: implement getClip
+    return RRect.fromLTRBR(0, 0, size.width, size.height, Radius.circular(50));
   }
 
   @override
-  bool shouldReclip(covariant CustomClipper<Rect> oldClipper) {
-    return false;
+  bool shouldReclip(covariant CustomClipper<RRect> oldClipper) {
+    return true;
   }
 }
